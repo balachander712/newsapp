@@ -12,3 +12,13 @@ def index(request):
     api = json.loads(api_request.content)
     
     return render(request,'index.html',{'data' : api})
+
+def base(request):
+    import requests
+    import json
+
+    business_api = requests.get("http://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=84b612b3bf4a4614a94d39a29eb99e3c")
+    business = json.loads(business_api.content)
+
+
+    return render(request,'base.html',{'b_data' : business})
